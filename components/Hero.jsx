@@ -15,29 +15,56 @@ export default function Hero() {
     () => ({
       background: { color: { value: "transparent" } },
       fullScreen: { enable: false },
-      fpsLimit: 60,
+      fpsLimit: 120,
       detectRetina: true,
       particles: {
-        number: { value: 48, density: { enable: true, area: 900 } },
-        color: { value: ["#7dd3fc", "#a5b4fc", "#f0abfc"] },
-        opacity: { value: 0.35 },
-        size: { value: { min: 1, max: 3 } },
-        move: { enable: true, speed: 0.6, direction: "none", outModes: "out" },
+        number: { value: 80, density: { enable: true, area: 800 } },
+        color: { value: ["#7dd3fc", "#a5b4fc", "#f0abfc", "#6366f1"] },
+        opacity: {
+          value: { min: 0.1, max: 0.5 },
+          animation: {
+            enable: true,
+            speed: 1,
+            minimumValue: 0.1,
+          },
+        },
+        size: {
+          value: { min: 1, max: 3 },
+          animation: {
+            enable: true,
+            speed: 2,
+            minimumValue: 1,
+          },
+        },
+        move: {
+          enable: true,
+          speed: { min: 0.1, max: 1 },
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: "out",
+        },
         links: {
           enable: true,
-          distance: 140,
+          distance: 150,
           color: "#ffffff",
-          opacity: 0.08,
+          opacity: 0.1,
           width: 1,
+          triangles: {
+            enable: true,
+            opacity: 0.02,
+          },
         },
       },
       interactivity: {
         events: {
-          onHover: { enable: true, mode: "repulse" },
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" },
           resize: true,
         },
         modes: {
-          repulse: { distance: 120, duration: 0.2 },
+          grab: { distance: 200, links: { opacity: 0.2 } },
+          push: { quantity: 4 },
         },
       },
     }),
@@ -47,13 +74,18 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-4"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4"
     >
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900" />
+      <div className="absolute inset-0 -z-10 bg-slate-950" />
+      
+      {/* Background Mesh/Grid Effect */}
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
 
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-70">
-        <div className="absolute -top-24 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-500/25 via-indigo-500/25 to-fuchsia-500/25 blur-3xl" />
-        <div className="absolute -bottom-28 right-[-6rem] h-[24rem] w-[24rem] rounded-full bg-gradient-to-tr from-emerald-500/15 via-cyan-500/15 to-sky-500/15 blur-3xl" />
+      {/* Radial Glows */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-[10%] left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]" />
+        <div className="absolute top-[20%] -left-[10%] h-[30rem] w-[30rem] rounded-full bg-sky-500/10 blur-[100px]" />
+        <div className="absolute bottom-[10%] -right-[10%] h-[35rem] w-[35rem] rounded-full bg-fuchsia-500/10 blur-[100px]" />
       </div>
 
       <div className="absolute inset-0 -z-10">
@@ -65,33 +97,39 @@ export default function Hero() {
         animate="show"
         variants={{
           hidden: { opacity: 0 },
-          show: { opacity: 1, transition: { staggerChildren: 0.12 } },
+          show: { opacity: 1, transition: { staggerChildren: 0.15 } },
         }}
-        className="relative mx-auto w-full max-w-4xl text-center"
+        className="relative mx-auto w-full max-w-5xl text-center"
       >
-        <motion.p
-          variants={{ hidden: { y: 14, opacity: 0 }, show: { y: 0, opacity: 1 } }}
-          className="mb-4 text-sm font-medium tracking-widest text-white/70"
+        <motion.div
+          variants={{ hidden: { scale: 0.8, opacity: 0 }, show: { scale: 1, opacity: 1 } }}
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 backdrop-blur-md"
         >
-          Aspiring Data Scientist
-        </motion.p>
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-500"></span>
+          </span>
+          <span className="text-xs font-semibold tracking-wider text-indigo-300 uppercase">
+            Available for new opportunities
+          </span>
+        </motion.div>
 
         <motion.h1
-          variants={{ hidden: { y: 14, opacity: 0 }, show: { y: 0, opacity: 1 } }}
-          className="text-balance text-4xl font-bold tracking-tight text-white sm:text-6xl"
+          variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } }}
+          className="text-balance text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl"
         >
-          Hi, I’m{" "}
-          <span className="relative inline-block bg-gradient-to-r from-sky-300 via-indigo-300 to-fuchsia-300 bg-[length:200%_200%] bg-clip-text text-transparent animate-[gradientShift_6s_ease-in-out_infinite]">
-            Mohit Mishra
+          Mastering Data to <br />
+          <span className="relative inline-block bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite] drop-shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+            Create Impact
           </span>
         </motion.h1>
 
         <motion.p
-          variants={{ hidden: { y: 14, opacity: 0 }, show: { y: 0, opacity: 1 } }}
-          className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-7 text-slate-200/80 sm:text-lg"
+          variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } }}
+          className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-8 text-slate-300/90 sm:text-xl"
         >
-          B.Tech student passionate about Data Science, Machine Learning and Data
-          Analysis.
+          Hi, I’m <span className="font-semibold text-white">Mohit Mishra</span>. 
+          A B.Tech student and aspiring Data Scientist turning complex datasets into actionable insights through Machine Learning and Analysis.
         </motion.p>
 
         <motion.div

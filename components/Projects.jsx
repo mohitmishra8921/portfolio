@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const PROJECTS = [
   {
@@ -64,16 +67,28 @@ export default function Projects() {
   return (
     <section id="projects" className="bg-slate-950 px-4 py-20">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Projects
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300">
             A few data projects I’ve worked on — from analysis to machine learning.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {PROJECTS.map((project) => (
             <article
               key={project.title}
@@ -144,7 +159,7 @@ export default function Projects() {
               </div>
             </article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

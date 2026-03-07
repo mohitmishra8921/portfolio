@@ -66,17 +66,16 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -24, opacity: 0 }}
+      initial={{ y: -100 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50"
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4"
     >
-      <div className="border-b border-white/20 bg-white/10 shadow-lg shadow-black/10 backdrop-blur-lg">
-        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <nav className="relative flex h-14 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-slate-900/40 px-6 shadow-2xl backdrop-blur-md">
           <Link
             href="/"
             onClick={(e) => handleAnchorClick(e, "#home")}
-            className="select-none text-base font-semibold tracking-tight text-white"
+            className="select-none text-sm font-bold tracking-tight text-white"
             aria-label="Go to home"
           >
             Mohit Mishra
@@ -84,7 +83,7 @@ export default function Navbar() {
 
           <div className="hidden items-center md:flex">
             <NavLinks
-              className="flex items-center gap-8"
+              className="flex items-center gap-6"
               onAnchorClick={handleAnchorClick}
             />
           </div>
@@ -120,7 +119,6 @@ export default function Navbar() {
               )}
             </svg>
           </button>
-        </nav>
 
         <AnimatePresence>
           {mobileOpen ? (
@@ -129,28 +127,25 @@ export default function Navbar() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="md:hidden"
+              transition={{ duration: 0.3 }}
+              className="absolute top-full left-0 right-0 mt-4 px-2 md:hidden"
             >
-              <div className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
-                <motion.div
-                  initial={{ y: -8, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -8, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="rounded-2xl border border-white/20 bg-white/10 p-4 shadow-lg shadow-black/10 backdrop-blur-lg"
-                >
-                  <NavLinks
-                    className="flex flex-col gap-4"
-                    onItemClick={() => setMobileOpen(false)}
-                    onAnchorClick={handleAnchorClick}
-                  />
-                </motion.div>
-              </div>
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                className="rounded-3xl border border-white/10 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl"
+              >
+                <NavLinks
+                  className="flex flex-col gap-6"
+                  onItemClick={() => setMobileOpen(false)}
+                  onAnchorClick={handleAnchorClick}
+                />
+              </motion.div>
             </motion.div>
           ) : null}
         </AnimatePresence>
-      </div>
+      </nav>
     </motion.header>
   );
 }

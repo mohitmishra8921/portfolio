@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const MILESTONES = [
   {
     title: "Started learning Python",
@@ -49,17 +53,28 @@ export default function Journey() {
   return (
     <section id="journey" className="bg-slate-950 px-4 py-20">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             My Data Science Journey
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300">
             A quick timeline of how I started and what I’m currently learning.
           </p>
-        </div>
+        </motion.div>
 
         <div className="mx-auto max-w-3xl">
-          <div className="animate-[fadeUp_700ms_ease-out_both]">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          >
             {MILESTONES.map((m, idx) => (
               <TimelineItem
                 key={m.title}
@@ -68,7 +83,7 @@ export default function Journey() {
                 isLast={idx === MILESTONES.length - 1}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

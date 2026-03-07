@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const SKILL_GROUPS = [
   {
     title: "Programming",
@@ -45,7 +49,13 @@ export default function Skills() {
   return (
     <section id="skills" className="bg-slate-950 px-4 py-20">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Skills
           </h2>
@@ -53,9 +63,15 @@ export default function Skills() {
             A focused toolkit I’m building for data analysis, machine learning,
             and real-world projects.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="grid gap-6 md:grid-cols-2"
+        >
           {SKILL_GROUPS.map((group) => (
             <div
               key={group.title}
@@ -79,7 +95,7 @@ export default function Skills() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

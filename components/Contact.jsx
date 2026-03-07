@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function Field({ label, children }) {
   return (
@@ -29,16 +30,28 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-slate-950 px-4 py-20">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Contact Me
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300">
             Have a project idea or want to connect? Send me a message.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-5">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="grid gap-8 md:grid-cols-5"
+        >
           <div className="md:col-span-3">
             <form
               onSubmit={onSubmit}
@@ -132,7 +145,7 @@ export default function Contact() {
               </div>
             </div>
           </aside>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
