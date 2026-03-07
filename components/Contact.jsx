@@ -1,0 +1,139 @@
+"use client";
+
+import { useState } from "react";
+
+function Field({ label, children }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-sm font-semibold text-white">
+        {label}
+      </span>
+      {children}
+    </label>
+  );
+}
+
+export default function Contact() {
+  const [status, setStatus] = useState("idle");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sent");
+
+    setTimeout(() => {
+      setStatus("idle");
+      e.target.reset();
+    }, 800);
+  };
+
+  return (
+    <section id="contact" className="bg-slate-950 px-4 py-20">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Contact Me
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300">
+            Have a project idea or want to connect? Send me a message.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-5">
+          <div className="md:col-span-3">
+            <form
+              onSubmit={onSubmit}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
+            >
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field label="Name">
+                  <input
+                    name="name"
+                    required
+                    placeholder="Your name"
+                    className="h-11 w-full rounded-xl border border-white/10 bg-slate-900/40 px-4 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-white/20 focus:ring-2 focus:ring-white/10"
+                  />
+                </Field>
+
+                <Field label="Email">
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    className="h-11 w-full rounded-xl border border-white/10 bg-slate-900/40 px-4 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-white/20 focus:ring-2 focus:ring-white/10"
+                  />
+                </Field>
+              </div>
+
+              <div className="mt-5">
+                <Field label="Message">
+                  <textarea
+                    name="message"
+                    required
+                    placeholder="Write your message..."
+                    rows={5}
+                    className="w-full resize-none rounded-xl border border-white/10 bg-slate-900/40 px-4 py-3 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-white/20 focus:ring-2 focus:ring-white/10"
+                  />
+                </Field>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <button
+                  type="submit"
+                  className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-6 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-white/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 disabled:opacity-60"
+                  disabled={status === "sent"}
+                >
+                  {status === "sent" ? "Sent" : "Send"}
+                </button>
+
+                <p className="text-xs text-slate-400">
+                  This form is UI-only right now (no backend).
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <aside className="md:col-span-2">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20">
+              <h3 className="text-base font-semibold text-white">Details</h3>
+
+              <div className="mt-5 grid gap-4">
+                <a
+                  href="mailto:mohitmishra@example.com"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
+                >
+                  <p className="text-xs font-semibold text-slate-400">Email</p>
+                  <p className="mt-1 font-medium text-white">
+                    mohitmishra@example.com
+                  </p>
+                </a>
+
+                <a
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
+                >
+                  <p className="text-xs font-semibold text-slate-400">GitHub</p>
+                  <p className="mt-1 font-medium text-white">github.com</p>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
+                >
+                  <p className="text-xs font-semibold text-slate-400">
+                    LinkedIn
+                  </p>
+                  <p className="mt-1 font-medium text-white">linkedin.com</p>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  );
+}
