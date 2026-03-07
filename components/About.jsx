@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const CARDS = [
   {
@@ -19,7 +20,13 @@ export default function About() {
   return (
     <section id="about" className="bg-slate-950 px-4 py-20">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             About Me
           </h2>
@@ -29,9 +36,15 @@ export default function About() {
             about learning Python, Data Analysis, Machine Learning, and building
             real-world data projects.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid items-center gap-10 md:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="grid items-center gap-10 md:grid-cols-2"
+        >
           <div className="mx-auto w-full max-w-sm">
             <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/20">
               <Image
@@ -69,7 +82,7 @@ export default function About() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

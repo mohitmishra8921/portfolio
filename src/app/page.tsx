@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900">
       <Hero />
       <About />
       <Skills />
