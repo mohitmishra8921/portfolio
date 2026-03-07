@@ -5,40 +5,40 @@ import { motion } from "framer-motion";
 
 const PROJECTS = [
   {
-    title: "Netflix Data Analysis",
+    title: "Netflix Content Strategy Analysis",
     description:
-      "Exploratory data analysis on Netflix titles to uncover trends in content, genres, and release patterns.",
-    tools: ["Python", "Pandas", "Matplotlib"],
+      "Comprehensive EDA on 8,000+ Netflix titles using Python. Identified key growth trends in international content and optimal release windows to maximize viewership.",
+    tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
     imageSrc: "/globe.svg",
-    githubUrl: "https://github.com/",
-    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/mohitmishra8921",
+    liveUrl: "#",
   },
   {
-    title: "IPL Data Analysis",
+    title: "IPL Performance Analytics",
     description:
-      "Analyzed IPL match and ball-by-ball datasets to identify performance insights and team/player patterns.",
-    tools: ["Python", "Pandas"],
+      "Data-driven analysis of IPL match history. Built a scoring model to evaluate player impact and team win-probabilities based on historical ball-by-ball data.",
+    tools: ["Python", "NumPy", "Pandas", "Plotly"],
     imageSrc: "/file.svg",
-    githubUrl: "https://github.com/",
-    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/mohitmishra8921",
+    liveUrl: "#",
   },
   {
-    title: "Sales Data Dashboard",
+    title: "Dynamic Sales Forecasting",
     description:
-      "Built a sales analytics dashboard with KPI summaries and visual insights to support data-driven decisions.",
-    tools: ["Python", "Pandas", "Visualization"],
+      "Interactive dashboard visualizing retail sales performance. Implemented time-series analysis to predict upcoming quarterly demand with 85% accuracy.",
+    tools: ["Python", "Pandas", "Scikit-learn", "Streamlit"],
     imageSrc: "/window.svg",
-    githubUrl: "https://github.com/",
-    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/mohitmishra8921",
+    liveUrl: "#",
   },
   {
-    title: "House Price Prediction",
+    title: "Predictive Real Estate Valuation",
     description:
-      "Trained and evaluated regression models to predict house prices using feature engineering and ML workflows.",
-    tools: ["Python", "Scikit-learn"],
+      "End-to-end ML pipeline for house price prediction. Leveraged XGBoost and feature engineering to significantly reduce error margins in market valuation.",
+    tools: ["Python", "XGBoost", "Scikit-learn", "FastAPI"],
     imageSrc: "/next.svg",
-    githubUrl: "https://github.com/",
-    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/mohitmishra8921",
+    liveUrl: "#",
   },
 ];
 

@@ -21,7 +21,7 @@ export default function Footer() {
 
         <div className="flex items-center justify-center gap-4">
           <a
-            href="https://github.com/"
+            href="https://github.com/mohitmishra8921"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-lg p-2 text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"

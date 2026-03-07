@@ -122,13 +122,13 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/mohitmishra8921"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
                 >
                   <p className="text-xs font-semibold text-slate-400">GitHub</p>
-                  <p className="mt-1 font-medium text-white">github.com</p>
+                  <p className="mt-1 font-medium text-white">github.com/mohitmishra8921</p>
                 </a>
 
                 <a
