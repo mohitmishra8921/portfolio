@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const CARDS = [
@@ -50,12 +49,10 @@ export default function About() {
           {/* Left Side: Profile Picture */}
           <div className="relative mx-auto w-full max-w-sm md:max-w-md">
             <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 shadow-2xl backdrop-blur-sm">
-              <Image
+              <img
                 src="/mohit.jpeg" 
                 alt="Mohit Mishra Profile"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                priority={true}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               {/* Decorative overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />
