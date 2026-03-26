@@ -9,7 +9,7 @@ const PROJECTS = [
     description:
       "Comprehensive EDA on 8,000+ Netflix titles using Python. Identified key growth trends in international content and optimal release windows to maximize viewership.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
-    imageSrc: "/globe.svg",
+    imageSrc: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921",
     liveUrl: "#",
   },
@@ -18,7 +18,7 @@ const PROJECTS = [
     description:
       "Data-driven analysis of IPL match history. Built a scoring model to evaluate player impact and team win-probabilities based on historical ball-by-ball data.",
     tools: ["Python", "NumPy", "Pandas", "Plotly"],
-    imageSrc: "/file.svg",
+    imageSrc: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921",
     liveUrl: "#",
   },
@@ -27,7 +27,7 @@ const PROJECTS = [
     description:
       "Interactive dashboard visualizing retail sales performance. Implemented time-series analysis to predict upcoming quarterly demand with 85% accuracy.",
     tools: ["Python", "Pandas", "Scikit-learn", "Streamlit"],
-    imageSrc: "/window.svg",
+    imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921",
     liveUrl: "#",
   },
@@ -36,7 +36,7 @@ const PROJECTS = [
     description:
       "End-to-end ML pipeline for house price prediction. Leveraged XGBoost and feature engineering to significantly reduce error margins in market valuation.",
     tools: ["Python", "XGBoost", "Scikit-learn", "FastAPI"],
-    imageSrc: "/next.svg",
+    imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921",
     liveUrl: "#",
   },
@@ -100,7 +100,7 @@ export default function Projects() {
                   src={project.imageSrc}
                   alt={project.title}
                   fill
-                  className="object-contain p-10 opacity-90 transition group-hover:opacity-100"
+                  className="object-cover opacity-90 transition duration-500 group-hover:scale-110 group-hover:opacity-100"
                 />
               </div>
 
