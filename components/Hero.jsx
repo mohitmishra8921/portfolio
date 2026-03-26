@@ -15,10 +15,10 @@ export default function Hero() {
     () => ({
       background: { color: { value: "transparent" } },
       fullScreen: { enable: false },
-      fpsLimit: 120,
+      fpsLimit: 60,
       detectRetina: true,
       particles: {
-        number: { value: 80, density: { enable: true, area: 800 } },
+        number: { value: 30, density: { enable: true, area: 800 } },
         color: { value: ["#7dd3fc", "#a5b4fc", "#f0abfc", "#6366f1"] },
         opacity: {
           value: { min: 0.1, max: 0.5 },
