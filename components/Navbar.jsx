@@ -59,9 +59,27 @@ export default function Navbar() {
     const el = document.querySelector(href);
     if (!el) return;
 
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.history.replaceState(null, "", pathname);
-    setMobileOpen(false);
+    // Use a small delay on mobile to let the menu close smoothly before jumping
+    const scroll = () => {
+      const offset = 80; // height of navbar + gap
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      window.history.replaceState(null, "", href);
+    };
+
+    if (mobileOpen) {
+      setMobileOpen(false);
+      // Wait for exit animation (300ms) to complete before scrolling for better performance
+      setTimeout(scroll, 310);
+    } else {
+      scroll();
+    }
   };
 
   return (
