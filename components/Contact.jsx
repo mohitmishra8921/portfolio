@@ -132,7 +132,7 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="https://www.linkedin.com/feed/"
+                  href="https://www.linkedin.com/in/mohit-kumar-mishra-32986b328/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
@@ -140,7 +140,7 @@ export default function Contact() {
                   <p className="text-xs font-semibold text-slate-400">
                     LinkedIn
                   </p>
-                  <p className="mt-1 font-medium text-white">linkedin.com/feed</p>
+                  <p className="mt-1 font-medium text-white">mohit-kumar-mishra</p>
                 </a>
               </div>
             </div>

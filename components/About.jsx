@@ -50,7 +50,7 @@ export default function About() {
           <div className="relative mx-auto w-full max-w-sm md:max-w-md">
             <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 shadow-2xl backdrop-blur-sm">
               <img
-                src="/mohit.jpeg" 
+                src="/mohit2.jpeg" 
                 alt="Mohit Mishra Profile"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
