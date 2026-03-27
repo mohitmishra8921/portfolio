@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 
 function Field({ label, children }) {
   return (
@@ -16,7 +15,6 @@ function Field({ label, children }) {
 }
 
 export default function Contact() {
-  const formRef = useRef();
   const [status, setStatus] = useState("idle");
   const [result, setResult] = useState("");
 
@@ -25,63 +23,44 @@ export default function Contact() {
     setStatus("sending");
     setResult("Sending...");
 
-    // Environment variables with NEXT_PUBLIC_ prefix for client-side access
-    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
 
-    // Log the variable names being used (not the values for security)
-    console.log("Using EmailJS Config:", {
-      SERVICE_ID: SERVICE_ID ? "LOADED" : "MISSING",
-      TEMPLATE_ID: TEMPLATE_ID ? "LOADED" : "MISSING",
-      PUBLIC_KEY: PUBLIC_KEY ? "LOADED" : "MISSING",
-    });
-
-    // Check if variables are loaded
-    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      const errorMsg = "EmailJS Error: Environment variables are missing. Ensure they start with NEXT_PUBLIC_";
-      console.error(errorMsg);
-      setStatus("error");
-      setResult(errorMsg);
-      return;
-    }
-
-    // Initialize EmailJS with the Public Key
-    emailjs.init(PUBLIC_KEY);
-
-    emailjs
-      .sendForm(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        formRef.current,
-        PUBLIC_KEY
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS:", response.status, response.text);
-          if (response.status === 200) {
-            setStatus("sent");
-            setResult("Message sent! I'll get back to you soon.");
-            formRef.current.reset();
-            setTimeout(() => {
-              setStatus("idle");
-              setResult("");
-            }, 5000);
-          } else {
-            throw new Error(`Unexpected response status: ${response.status}`);
-          }
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.error("EmailJS Error Status:", error.status);
-          console.error("EmailJS Error Text:", error.text);
-          setStatus("error");
-          setResult(`EmailJS Error: ${error.status || 'Unknown'} - ${error.text || 'Something went wrong'}`);
-          setTimeout(() => {
-            setStatus("idle");
-            setResult("");
-          }, 5000);
-        }
-      );
+        body: JSON.stringify(data),
+      });
+
+      const resultData = await response.json();
+
+      if (response.ok) {
+        setStatus("sent");
+        setResult("Message sent! I'll get back to you soon.");
+        e.target.reset();
+        setTimeout(() => {
+          setStatus("idle");
+          setResult("");
+        }, 5000);
+      } else {
+        throw new Error(resultData.error || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Contact Form Error:", error);
+      setStatus("error");
+      setResult(error.message || "Something went wrong. Please try again.");
+      setTimeout(() => {
+        setStatus("idle");
+        setResult("");
+      }, 5000);
+    }
   };
 
   return (
@@ -111,10 +90,8 @@ export default function Contact() {
         >
           <div className="md:col-span-3">
             <form
-              ref={formRef}
               onSubmit={onSubmit}
               className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
-              data-netlify="true"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field label="Name">
