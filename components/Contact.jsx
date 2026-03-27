@@ -30,14 +30,24 @@ export default function Contact() {
     const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
+    // Log the variable names being used (not the values for security)
+    console.log("Using EmailJS Config:", {
+      SERVICE_ID: SERVICE_ID ? "LOADED" : "MISSING",
+      TEMPLATE_ID: TEMPLATE_ID ? "LOADED" : "MISSING",
+      PUBLIC_KEY: PUBLIC_KEY ? "LOADED" : "MISSING",
+    });
+
     // Check if variables are loaded
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      console.error("EmailJS Error: Environment variables are missing or misconfigured.");
-      console.log("Check if they are prefixed with NEXT_PUBLIC_ in your .env.local or deployment dashboard.");
+      const errorMsg = "EmailJS Error: Environment variables are missing. Ensure they start with NEXT_PUBLIC_";
+      console.error(errorMsg);
       setStatus("error");
-      setResult("Configuration error. Please check console for details.");
+      setResult(errorMsg);
       return;
     }
+
+    // Initialize EmailJS with the Public Key
+    emailjs.init(PUBLIC_KEY);
 
     emailjs
       .sendForm(
@@ -62,9 +72,10 @@ export default function Contact() {
           }
         },
         (error) => {
-          console.error("FAILED:", error);
+          console.error("EmailJS Error Status:", error.status);
+          console.error("EmailJS Error Text:", error.text);
           setStatus("error");
-          setResult(`Error: ${error.text || "Something went wrong. Please try again."}`);
+          setResult(`EmailJS Error: ${error.status || 'Unknown'} - ${error.text || 'Something went wrong'}`);
           setTimeout(() => {
             setStatus("idle");
             setResult("");
