@@ -96,7 +96,7 @@ export default function Contact() {
                     name="email"
                     type="email"
                     required
-                    placeholder="you@example.com"
+                    placeholder="mohitmishra8921@gmail.com"
                     className="h-11 w-full rounded-xl border border-white/10 bg-slate-900/40 px-4 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-white/20 focus:ring-2 focus:ring-white/10"
                   />
                 </Field>
