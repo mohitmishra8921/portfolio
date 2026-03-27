@@ -8,7 +8,25 @@ import { loadSlim } from "tsparticles-slim";
 
 export default function Hero() {
   useEffect(() => {
+    // Force immediate scroll to top
     window.scrollTo(0, 0);
+    
+    // Also handle beforeunload to clear history scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Fallback for slower rendering
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    };
   }, []);
 
   const particlesInit = useCallback(async (engine) => {
