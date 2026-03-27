@@ -25,10 +25,19 @@ export default function Contact() {
     setStatus("sending");
     setResult("Sending...");
 
-    // Replace these with your actual IDs from EmailJS Dashboard
-    const SERVICE_ID = "service_xxxxxx"; // e.g., service_gmail
-    const TEMPLATE_ID = "template_xxxxxx"; 
-    const PUBLIC_KEY = "your_public_key";
+    // Environment variables with NEXT_PUBLIC_ prefix for client-side access
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    // Check if variables are loaded
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error("EmailJS Error: Environment variables are missing or misconfigured.");
+      console.log("Check if they are prefixed with NEXT_PUBLIC_ in your .env.local or deployment dashboard.");
+      setStatus("error");
+      setResult("Configuration error. Please check console for details.");
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -38,19 +47,24 @@ export default function Contact() {
         PUBLIC_KEY
       )
       .then(
-        () => {
-          setStatus("sent");
-          setResult("Message sent! I'll get back to you soon.");
-          formRef.current.reset();
-          setTimeout(() => {
-            setStatus("idle");
-            setResult("");
-          }, 5000);
+        (response) => {
+          console.log("SUCCESS:", response.status, response.text);
+          if (response.status === 200) {
+            setStatus("sent");
+            setResult("Message sent! I'll get back to you soon.");
+            formRef.current.reset();
+            setTimeout(() => {
+              setStatus("idle");
+              setResult("");
+            }, 5000);
+          } else {
+            throw new Error(`Unexpected response status: ${response.status}`);
+          }
         },
         (error) => {
-          console.error("EmailJS Error:", error);
+          console.error("FAILED:", error);
           setStatus("error");
-          setResult("Something went wrong. Please try again.");
+          setResult(`Error: ${error.text || "Something went wrong. Please try again."}`);
           setTimeout(() => {
             setStatus("idle");
             setResult("");
