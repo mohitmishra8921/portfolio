@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 function Field({ label, children }) {
   return (
@@ -15,6 +16,7 @@ function Field({ label, children }) {
 }
 
 export default function Contact() {
+  const formRef = useRef();
   const [status, setStatus] = useState("idle");
   const [result, setResult] = useState("");
 
@@ -23,35 +25,38 @@ export default function Contact() {
     setStatus("sending");
     setResult("Sending...");
 
-    const formData = new FormData(e.target);
-    // DO NOT DELETE: Replace 'YOUR_ACCESS_KEY_HERE' with your actual access key from https://web3forms.com
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
-    formData.append("subject", "New Portfolio Message from " + formData.get("name"));
-    formData.append("from_name", "Portfolio Contact Form");
+    // Replace these with your actual IDs from EmailJS Dashboard
+    const SERVICE_ID = "service_xxxxxx"; // e.g., service_gmail
+    const TEMPLATE_ID = "template_xxxxxx"; 
+    const PUBLIC_KEY = "your_public_key";
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setStatus("sent");
-        setResult("Message sent successfully!");
-        e.target.reset();
-        setTimeout(() => setStatus("idle"), 5000);
-      } else {
-        console.log("Error", data);
-        setResult(data.message);
-        setStatus("error");
-      }
-    } catch (error) {
-      console.log("Error", error);
-      setResult("Something went wrong. Please try again.");
-      setStatus("error");
-    }
+    emailjs
+      .sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        formRef.current,
+        PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setStatus("sent");
+          setResult("Message sent! I'll get back to you soon.");
+          formRef.current.reset();
+          setTimeout(() => {
+            setStatus("idle");
+            setResult("");
+          }, 5000);
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          setStatus("error");
+          setResult("Something went wrong. Please try again.");
+          setTimeout(() => {
+            setStatus("idle");
+            setResult("");
+          }, 5000);
+        }
+      );
   };
 
   return (
@@ -81,8 +86,10 @@ export default function Contact() {
         >
           <div className="md:col-span-3">
             <form
+              ref={formRef}
               onSubmit={onSubmit}
               className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
+              data-netlify="true"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field label="Name">
