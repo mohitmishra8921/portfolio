@@ -24,7 +24,10 @@ export default function Contact() {
     setResult("Sending...");
 
     const formData = new FormData(e.target);
+    // DO NOT DELETE: Replace 'YOUR_ACCESS_KEY_HERE' with your actual access key from https://web3forms.com
     formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+    formData.append("subject", "New Portfolio Message from " + formData.get("name"));
+    formData.append("from_name", "Portfolio Contact Form");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -138,12 +141,12 @@ export default function Contact() {
 
               <div className="mt-5 grid gap-4">
                 <a
-                  href="mailto:mohitmishra@example.com"
+                  href="mailto:mohitmishra8921@gmail.com"
                   className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
                 >
                   <p className="text-xs font-semibold text-slate-400">Email</p>
                   <p className="mt-1 font-medium text-white">
-                    mohitmishra@example.com
+                    mohitmishra8921@gmail.com
                   </p>
                 </a>
 
