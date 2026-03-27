@@ -10,12 +10,9 @@ import {
   SiGit, 
   SiGithub, 
   SiJupyter,
-  SiTableau,
-  SiPowerbi,
-  SiMicrosoftexcel,
   SiSqlite
 } from "react-icons/si";
-import { VscGraph, VscSettingsGear, VscCode } from "react-icons/vsc";
+import { VscGraph, VscSettingsGear, VscCode, VscTable, VscLibrary, VscPieChart } from "react-icons/vsc";
 
 const SKILL_GROUPS = [
   {
@@ -44,8 +41,8 @@ const SKILL_GROUPS = [
     icon: <VscGraph className="text-fuchsia-400" />,
     skills: [
       { name: "Matplotlib / Seaborn", icon: <span className="text-xs font-bold">M/S</span> },
-      { name: "Excel (Advanced)", icon: <SiMicrosoftexcel className="text-[#217346]" /> },
-      { name: "Tableau / Power BI", icon: <SiTableau className="text-[#E97627]" /> },
+      { name: "Excel (Advanced)", icon: <VscTable className="text-[#217346]" /> },
+      { name: "Tableau / Power BI", icon: <VscPieChart className="text-[#E97627]" /> },
     ],
   },
   {
