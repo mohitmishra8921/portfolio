@@ -16,15 +16,39 @@ function Field({ label, children }) {
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");
+  const [result, setResult] = useState("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setStatus("sent");
+    setStatus("sending");
+    setResult("Sending...");
 
-    setTimeout(() => {
-      setStatus("idle");
-      e.target.reset();
-    }, 800);
+    const formData = new FormData(e.target);
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("sent");
+        setResult("Message sent successfully!");
+        e.target.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        console.log("Error", data);
+        setResult(data.message);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.log("Error", error);
+      setResult("Something went wrong. Please try again.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -94,14 +118,16 @@ export default function Contact() {
                 <button
                   type="submit"
                   className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-6 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-white/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 disabled:opacity-60"
-                  disabled={status === "sent"}
+                  disabled={status === "sending" || status === "sent"}
                 >
-                  {status === "sent" ? "Sent" : "Send"}
+                  {status === "sending" ? "Sending..." : status === "sent" ? "Sent!" : "Send Message"}
                 </button>
 
-                <p className="text-xs text-slate-400">
-                  This form is UI-only right now (no backend).
-                </p>
+                {result && (
+                  <p className={`text-xs ${status === "sent" ? "text-emerald-400" : status === "error" ? "text-rose-400" : "text-slate-400"}`}>
+                    {result}
+                  </p>
+                )}
               </div>
             </form>
           </div>
