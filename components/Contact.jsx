@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { SiGithub, SiLinkedin, SiKaggle, SiWhatsapp } from "react-icons/si";
 
 function Field({ label, children }) {
   return (
@@ -163,22 +164,52 @@ export default function Contact() {
                   href="https://github.com/mohitmishra8921"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"
                 >
-                  <p className="text-xs font-semibold text-slate-400">GitHub</p>
-                  <p className="mt-1 font-medium text-white">github.com/mohitmishra8921</p>
+                  <SiGithub className="h-5 w-5 text-white" />
+                  <div>
+                    <p className="text-xs font-semibold text-slate-400">GitHub</p>
+                    <p className="mt-1 font-medium text-white">github.com/mohitmishra8921</p>
+                  </div>
                 </a>
 
                 <a
                   href="https://www.linkedin.com/in/mohit-kumar-mishra-32986b328/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"
                 >
-                  <p className="text-xs font-semibold text-slate-400">
-                    LinkedIn
-                  </p>
-                  <p className="mt-1 font-medium text-white">mohit-kumar-mishra</p>
+                  <SiLinkedin className="h-5 w-5 text-[#0A66C2]" />
+                  <div>
+                    <p className="text-xs font-semibold text-slate-400">LinkedIn</p>
+                    <p className="mt-1 font-medium text-white">mohit-kumar-mishra</p>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.kaggle.com/mohitmishra8921"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"
+                >
+                  <SiKaggle className="h-5 w-5 text-[#20BEFF]" />
+                  <div>
+                    <p className="text-xs font-semibold text-slate-400">Kaggle</p>
+                    <p className="mt-1 font-medium text-white">mohitmishra8921</p>
+                  </div>
+                </a>
+
+                <a
+                  href="https://wa.me/91XXXXXXXXXX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"
+                >
+                  <SiWhatsapp className="h-5 w-5 text-[#25D366]" />
+                  <div>
+                    <p className="text-xs font-semibold text-slate-400">WhatsApp</p>
+                    <p className="mt-1 font-medium text-white">Chat on WhatsApp</p>
+                  </div>
                 </a>
               </div>
             </div>
