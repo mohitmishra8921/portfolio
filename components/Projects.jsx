@@ -12,8 +12,8 @@ const PROJECTS = [
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
     imageSrc: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/netflix-analysis",
-    demoUrl: "#",
-    demoReady: false,
+    demoUrl: "https://your-live-demo.com",
+    demoReady: true,
   },
   {
     title: "IPL Performance Analytics",
@@ -22,8 +22,8 @@ const PROJECTS = [
     tools: ["Python", "NumPy", "Pandas", "Plotly"],
     imageSrc: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/ipl-analytics",
-    demoUrl: "#",
-    demoReady: false,
+    demoUrl: "https://your-live-demo.com",
+    demoReady: true,
   },
   {
     title: "Dynamic Sales Forecasting",
@@ -32,8 +32,8 @@ const PROJECTS = [
     tools: ["Python", "Pandas", "Scikit-learn", "Streamlit"],
     imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/sales-forecasting",
-    demoUrl: "#",
-    demoReady: false,
+    demoUrl: "https://your-live-demo.com",
+    demoReady: true,
   },
   {
     title: "Predictive Real Estate Valuation",
@@ -42,8 +42,8 @@ const PROJECTS = [
     tools: ["Python", "XGBoost", "Scikit-learn", "FastAPI"],
     imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/real-estate-valuation",
-    demoUrl: "#",
-    demoReady: false,
+    demoUrl: "https://your-live-demo.com",
+    demoReady: true,
   },
 ];
 
