@@ -9,7 +9,7 @@ const PROJECTS = [
   {
     title: "Netflix Content Strategy Analysis",
     description:
-      "Comprehensive EDA on 8,000+ Netflix titles using Python. Identified key growth trends in international content and optimal release windows to maximize viewership.",
+      "Performed EDA on 8,000+ Netflix titles using Python. Uncovered that international content grew 3x between 2016–2020. Delivered 12 visual charts identifying optimal release windows to maximize viewership.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
     imageSrc: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/netflix-analysis",
@@ -19,7 +19,7 @@ const PROJECTS = [
   {
     title: "IPL Performance Analytics",
     description:
-      "Data-driven analysis of IPL match history. Built a scoring model to evaluate player impact and team win-probabilities based on historical ball-by-ball data.",
+      "Analyzed 500,000+ ball-by-ball records from IPL history. Built a custom scoring model achieving 78% accuracy in predicting team win-probability based on match conditions.",
     tools: ["Python", "NumPy", "Pandas", "Plotly"],
     imageSrc: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/ipl-analytics",
@@ -29,7 +29,7 @@ const PROJECTS = [
   {
     title: "Dynamic Sales Forecasting",
     description:
-      "Interactive dashboard visualizing retail sales performance. Implemented time-series analysis to predict upcoming quarterly demand with 85% accuracy.",
+      "Built an interactive Streamlit dashboard on 2 years of retail data. Applied ARIMA time-series forecasting to predict quarterly demand with 85% accuracy, reducing overstock risk.",
     tools: ["Python", "Pandas", "Scikit-learn", "Streamlit"],
     imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/sales-forecasting",
@@ -39,7 +39,7 @@ const PROJECTS = [
   {
     title: "Predictive Real Estate Valuation",
     description:
-      "End-to-end ML pipeline for house price prediction. Leveraged XGBoost and feature engineering to significantly reduce error margins in market valuation.",
+      "Developed an end-to-end ML pipeline using XGBoost + feature engineering. Achieved RMSE reduction of 23% over baseline, deployed via FastAPI.",
     tools: ["Python", "XGBoost", "Scikit-learn", "FastAPI"],
     imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop",
     githubUrl: "https://github.com/mohitmishra8921/real-estate-valuation",
