@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -10,8 +11,9 @@ const PROJECTS = [
       "Comprehensive EDA on 8,000+ Netflix titles using Python. Identified key growth trends in international content and optimal release windows to maximize viewership.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
     imageSrc: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop",
-    githubUrl: "https://github.com/mohitmishra8921",
-    liveUrl: "#",
+    githubUrl: "https://github.com/mohitmishra8921/netflix-analysis",
+    demoUrl: "#",
+    demoReady: false,
   },
   {
     title: "IPL Performance Analytics",
@@ -19,8 +21,9 @@ const PROJECTS = [
       "Data-driven analysis of IPL match history. Built a scoring model to evaluate player impact and team win-probabilities based on historical ball-by-ball data.",
     tools: ["Python", "NumPy", "Pandas", "Plotly"],
     imageSrc: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop",
-    githubUrl: "https://github.com/mohitmishra8921",
-    liveUrl: "#",
+    githubUrl: "https://github.com/mohitmishra8921/ipl-analytics",
+    demoUrl: "#",
+    demoReady: false,
   },
   {
     title: "Dynamic Sales Forecasting",
@@ -28,8 +31,9 @@ const PROJECTS = [
       "Interactive dashboard visualizing retail sales performance. Implemented time-series analysis to predict upcoming quarterly demand with 85% accuracy.",
     tools: ["Python", "Pandas", "Scikit-learn", "Streamlit"],
     imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop",
-    githubUrl: "https://github.com/mohitmishra8921",
-    liveUrl: "#",
+    githubUrl: "https://github.com/mohitmishra8921/sales-forecasting",
+    demoUrl: "#",
+    demoReady: false,
   },
   {
     title: "Predictive Real Estate Valuation",
@@ -37,29 +41,40 @@ const PROJECTS = [
       "End-to-end ML pipeline for house price prediction. Leveraged XGBoost and feature engineering to significantly reduce error margins in market valuation.",
     tools: ["Python", "XGBoost", "Scikit-learn", "FastAPI"],
     imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop",
-    githubUrl: "https://github.com/mohitmishra8921",
-    liveUrl: "#",
+    githubUrl: "https://github.com/mohitmishra8921/real-estate-valuation",
+    demoUrl: "#",
+    demoReady: false,
   },
 ];
 
-function ExternalLinkButton({ href, children, variant = "secondary" }) {
+function ExternalLinkButton({ href, children, variant = "secondary", disabled = false, tooltip = "" }) {
   const base =
-    "inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
+    "group relative inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
 
   const styles =
     variant === "primary"
-      ? "bg-white text-slate-950 hover:bg-white/90"
+      ? disabled 
+        ? "bg-white/10 text-white/40 cursor-not-allowed border border-white/5" 
+        : "bg-white text-slate-950 hover:bg-white/90"
       : "border border-white/15 bg-white/5 text-white hover:bg-white/10";
 
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${base} ${styles}`}
-    >
-      {children}
-    </a>
+    <div className="relative group/btn">
+      <a
+        href={disabled ? undefined : href}
+        target={disabled ? undefined : "_blank"}
+        rel={disabled ? undefined : "noopener noreferrer"}
+        className={`${base} ${styles}`}
+      >
+        {children}
+      </a>
+      {disabled && tooltip && (
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 rounded bg-slate-800 px-2 py-1 text-[10px] text-white transition-all group-hover/btn:scale-100 whitespace-nowrap z-20 shadow-xl border border-white/10">
+          {tooltip}
+          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-2 w-2 rotate-45 bg-slate-800 border-r border-b border-white/10" />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -125,34 +140,17 @@ export default function Projects() {
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <ExternalLinkButton href={project.githubUrl} variant="secondary">
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      className="h-4 w-4"
-                      fill="currentColor"
-                    >
-                      <path d="M12 .5C5.73.5.75 5.65.75 12.06c0 5.1 3.17 9.42 7.57 10.95.55.11.76-.25.76-.55 0-.27-.01-1.16-.02-2.1-3.08.69-3.73-1.24-3.73-1.24-.5-1.33-1.23-1.68-1.23-1.68-1-.71.08-.7.08-.7 1.1.08 1.67 1.18 1.67 1.18.98 1.75 2.56 1.25 3.18.96.1-.73.38-1.25.69-1.54-2.46-.29-5.05-1.26-5.05-5.63 0-1.25.43-2.27 1.14-3.07-.12-.29-.5-1.44.11-3.01 0 0 .93-.3 3.05 1.17a10.2 10.2 0 0 1 2.78-.39c.94 0 1.89.13 2.78.39 2.12-1.47 3.05-1.17 3.05-1.17.61 1.57.23 2.72.11 3.01.71.8 1.14 1.82 1.14 3.07 0 4.38-2.6 5.33-5.08 5.61.39.35.74 1.05.74 2.12 0 1.53-.02 2.76-.02 3.14 0 .31.2.67.77.55 4.39-1.53 7.56-5.85 7.56-10.95C23.25 5.65 18.27.5 12 .5z" />
-                    </svg>
+                    <Github className="h-4 w-4" />
                     GitHub
                   </ExternalLinkButton>
 
-                  <ExternalLinkButton href={project.liveUrl} variant="primary">
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M14 3h7v7" />
-                      <path d="M10 14L21 3" />
-                      <path d="M21 14v7h-7" />
-                      <path d="M3 10V3h7" />
-                      <path d="M3 21h7" />
-                    </svg>
+                  <ExternalLinkButton 
+                    href={project.demoUrl} 
+                    variant="primary"
+                    disabled={!project.demoReady}
+                    tooltip={!project.demoReady ? "Coming Soon" : ""}
+                  >
+                    <ExternalLink className="h-4 w-4" />
                     Live Demo
                   </ExternalLinkButton>
                 </div>
