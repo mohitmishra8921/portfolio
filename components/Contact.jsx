@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SiGithub, SiLinkedin, SiKaggle, SiWhatsapp } from "react-icons/si";
+import { SiGithub, SiKaggle, SiWhatsapp } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 
 function Field({ label, children }) {
   return (
@@ -179,7 +180,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"
                 >
-                  <SiLinkedin className="h-5 w-5 text-[#0A66C2]" />
+                  <FaLinkedin className="h-5 w-5 text-[#0A66C2]" />
                   <div>
                     <p className="text-xs font-semibold text-slate-400">LinkedIn</p>
                     <p className="mt-1 font-medium text-white">mohit-kumar-mishra</p>
@@ -200,7 +201,7 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="https://wa.me/91XXXXXXXXXX"
+                  href="https://wa.me/919312932794"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"

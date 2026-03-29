@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SiGithub, SiLinkedin, SiKaggle } from "react-icons/si";
+import { SiGithub, SiKaggle } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -39,7 +40,7 @@ export default function Footer() {
             className="inline-flex items-center justify-center rounded-lg p-2 text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             aria-label="LinkedIn"
           >
-            <SiLinkedin className="h-5 w-5" />
+            <FaLinkedin className="h-5 w-5" />
           </a>
 
           <a
