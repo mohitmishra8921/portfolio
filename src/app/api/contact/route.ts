@@ -13,35 +13,50 @@ export async function POST(req: Request) {
       );
     }
 
+    // Check environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("Missing EMAIL_USER or EMAIL_PASS environment variables");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
     // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for port 465
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, // This must be a Gmail App Password
+        pass: process.env.EMAIL_PASS, // Gmail App Password (no spaces)
       },
     });
 
+    // Verify transporter connection
+    await transporter.verify();
+
     // Email options
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: "mohitmishra8921@gmail.com",
       replyTo: email,
       subject: `New Portfolio Message from ${name}`,
       text: `
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
+Name: ${name}
+Email: ${email}
+Message: ${message}
       `,
       html: `
-        <div style="font-family: sans-serif; padding: 20px; color: #333;">
-          <h2>New Message from Portfolio</h2>
+        <div style="font-family: sans-serif; padding: 20px; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
+          <h2 style="color: #4f46e5;">New Message from Portfolio</h2>
           <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
           <p><strong>Message:</strong></p>
-          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; white-space: pre-wrap;">
             ${message.replace(/\n/g, "<br>")}
           </div>
+          <p style="color: #999; font-size: 12px; margin-top: 20px;">Sent from your portfolio contact form</p>
         </div>
       `,
     };

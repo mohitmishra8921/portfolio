@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import { Download } from "lucide-react";
 
 export default function Hero() {
   useEffect(() => {
@@ -172,6 +173,14 @@ export default function Hero() {
             <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400/60 via-indigo-400/60 to-fuchsia-400/60 opacity-0 blur transition group-hover:opacity-50" />
             Contact Me
           </Link>
+          <a
+            href="/resume.pdf"
+            download
+            className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-6 text-sm font-semibold text-white transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+          >
+            <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+            Download Resume
+          </a>
         </motion.div>
 
         <motion.div
