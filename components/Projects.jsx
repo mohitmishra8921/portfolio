@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 const PROJECTS = [
   {
@@ -140,7 +141,7 @@ export default function Projects() {
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <ExternalLinkButton href={project.githubUrl} variant="secondary">
-                    <Github className="h-4 w-4" />
+                    <SiGithub className="h-4 w-4" />
                     GitHub
                   </ExternalLinkButton>
 
