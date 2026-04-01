@@ -174,7 +174,9 @@ export default function Hero() {
           </Link>
           <a
             href="/resume.pdf"
-            download
+            download="Mohit_Kumar_Mishra_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-6 text-sm font-semibold text-white transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
           >
             <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
