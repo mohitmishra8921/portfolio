@@ -89,9 +89,9 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-3"
     >
-      <nav className="relative flex h-14 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-slate-900/40 px-6 shadow-2xl backdrop-blur-md">
+      <nav className="relative flex h-11 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-slate-900/40 px-5 shadow-2xl backdrop-blur-md">
           <Link
             href="/"
             onClick={(e) => handleAnchorClick(e, "#home")}
@@ -106,7 +106,7 @@ export default function Navbar() {
               className="flex items-center gap-6"
               onAnchorClick={handleAnchorClick}
             />
-            <div className="ml-6">
+            <div className="ml-4">
               <ThemeToggle />
             </div>
           </div>
