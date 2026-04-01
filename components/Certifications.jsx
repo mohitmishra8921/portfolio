@@ -5,28 +5,12 @@ import { Award, ExternalLink } from "lucide-react";
 
 const CERTIFICATIONS = [
   {
-    name: "Google Data Analytics Certificate",
-    platform: "Coursera",
-    year: "2024",
-    logo: "G",
-    logoBg: "bg-blue-500/20 text-blue-400",
-    link: "#",
-  },
-  {
-    name: "Python for Data Science",
-    platform: "IBM / Coursera",
-    year: "2024",
-    logo: "IBM",
-    logoBg: "bg-indigo-500/20 text-indigo-400",
-    link: "#",
-  },
-  {
-    name: "Intro to Machine Learning",
-    platform: "Kaggle",
-    year: "2024",
-    logo: "K",
-    logoBg: "bg-sky-500/20 text-sky-400",
-    link: "#",
+    name: "Complete Python Bootcamp 2026",
+    platform: "CodeWithHarry",
+    year: "February 27, 2026",
+    image: "/codewithharry-python-bootcamp copy.png",
+    certId: "CWH-COMPLETE-PYTHON-BOOTCAMP-LEARN-PYTHON-FROM-SCRATCH-VHSP4RDP",
+    link: "/codewithharry-python-bootcamp copy.png",
   },
 ];
 
@@ -38,8 +22,15 @@ function CertificationCard({ cert }) {
     >
       <div>
         <div className="flex items-start justify-between">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-2xl font-bold ${cert.logoBg}`}>
-            {cert.logo}
+          <div className="relative h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
+            <img
+              src={cert.image}
+              alt="CodeWithHarry Python Bootcamp Certificate"
+              className="h-full w-full object-cover"
+              onError={(e) => {
+                e.target.src = "https://placehold.co/400x300?text=Certificate";
+              }}
+            />
           </div>
           <Award className="h-5 w-5 text-slate-500 transition-colors group-hover:text-indigo-400" />
         </div>
@@ -48,6 +39,9 @@ function CertificationCard({ cert }) {
         </h3>
         <p className="mt-2 text-sm text-slate-400">
           {cert.platform} • {cert.year}
+        </p>
+        <p className="mt-2 text-[10px] font-mono text-slate-500 break-all">
+          ID: {cert.certId}
         </p>
       </div>
 

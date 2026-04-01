@@ -133,7 +133,7 @@ export default function Hero() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-500"></span>
           </span>
           <span className="text-xs font-semibold tracking-wider text-indigo-300 uppercase">
-            Available for new opportunities
+            Open to Internships & Full-Time Roles
           </span>
         </motion.div>
 
@@ -141,9 +141,9 @@ export default function Hero() {
           variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } }}
           className="text-balance text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl"
         >
-          Mastering Data to <br />
+          From Raw Data to <br />
           <span className="relative inline-block bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite] drop-shadow-[0_0_15px_rgba(99,102,241,0.3)]">
-            Create Impact
+            Real Decisions
           </span>
         </motion.h1>
 
@@ -151,8 +151,7 @@ export default function Hero() {
           variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } }}
           className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-8 text-slate-300/90 sm:text-xl"
         >
-          Hi, I’m <span className="font-semibold text-white">Mohit Mishra</span>. 
-          A B.Tech student and aspiring Data Scientist turning complex datasets into actionable insights through Machine Learning and Analysis.
+          Hi, I'm <span className="font-semibold text-white">Mohit Mishra</span> — a Data Science enthusiast who builds ML models, uncovers patterns in complex data, and delivers insights that actually matter.
         </motion.p>
 
         <motion.div

@@ -5,15 +5,15 @@ import { motion } from "framer-motion";
 const CARDS = [
   {
     title: "Education",
-    value: "B.Tech (4th Semester)",
+    value: "B.Tech — Computer Science",
   },
   {
     title: "Current Focus",
-    value: "Data Science",
+    value: "ML & Predictive Modeling",
   },
   {
     title: "Tools I Use",
-    value: "Python • Pandas • NumPy • SQL",
+    value: "Python • Scikit-Learn • SQL • XGBoost",
   },
 ];
 
@@ -32,10 +32,11 @@ export default function About() {
             About Me
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300">
-            I am Mohit Mishra, a B.Tech student currently in my 4th semester. I
-            recently started my journey in Data Science and I am passionate
-            about learning Python, Data Analysis, Machine Learning, and building
-            real-world data projects.
+            I'm Mohit Mishra, a B.Tech student with a strong foundation in Data
+            Science, Machine Learning, and Statistical Analysis. I specialize in
+            transforming raw, complex datasets into clear, actionable insights
+            that drive real-world decisions — and I'm actively seeking
+            opportunities to apply these skills in a professional environment.
           </p>
         </motion.div>
 
@@ -68,7 +69,7 @@ export default function About() {
                   </div>
                   <div>
                     <p className="text-xs font-medium text-slate-400">Experience</p>
-                    <p className="text-sm font-bold text-white">Entry Level DS</p>
+                    <p className="text-sm font-bold text-white">Practising Data Scientist</p>
                   </div>
                 </div>
               </div>
@@ -86,8 +87,12 @@ export default function About() {
                 Who am I?
               </h3>
               <p className="text-lg leading-relaxed text-slate-300">
-                I am a driven B.Tech student currently in my 4th semester, deeply immersed in the world of <span className="text-indigo-400 font-semibold">Data Science</span>. 
-                My focus lies in uncovering hidden patterns in complex datasets and translating them into meaningful stories.
+                I'm a results-oriented B.Tech student with hands-on experience
+                in end-to-end data science workflows — from data wrangling and
+                exploratory analysis to building and deploying predictive
+                models. I thrive at the intersection of data and
+                decision-making, and I am committed to continuous learning in an
+                ever-evolving field.
               </p>
             </div>
 
@@ -110,7 +115,7 @@ export default function About() {
             <div className="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 shadow-lg">
               <div className="absolute -left-1 top-0 h-full w-1 rounded-full bg-indigo-500/50" />
               <p className="text-sm leading-7 text-slate-300 italic">
-                &quot;I enjoy turning raw data into actionable insights, mastering ML concepts, and building projects that bridge the gap between theory and real-world impact.&quot;
+                &quot;My goal is simple: turn data into decisions. Whether it's forecasting demand, analyzing behavior, or building ML pipelines — I bring curiosity, precision, and a problem-solving mindset to every dataset I work with.&quot;
               </p>
             </div>
           </div>
