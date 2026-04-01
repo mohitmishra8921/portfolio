@@ -154,35 +154,32 @@ export default function Hero() {
           Hi, I'm <span className="font-semibold text-white">Mohit Mishra</span> — a Data Science enthusiast who builds ML models, uncovers patterns in complex data, and delivers insights that actually matter.
         </motion.p>
 
-        <motion.div
-          variants={{ hidden: { y: 14, opacity: 0 }, show: { y: 0, opacity: 1 } }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <Link
-            href="#projects"
-            className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-white px-6 text-sm font-semibold text-slate-950 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-          >
-            <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400 opacity-0 blur transition group-hover:opacity-60" />
-            View Projects
-          </Link>
-          <Link
-            href="#contact"
-            className="group relative inline-flex h-11 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-          >
-            <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400/60 via-indigo-400/60 to-fuchsia-400/60 opacity-0 blur transition group-hover:opacity-50" />
-            Contact Me
-          </Link>
-          <a
-            href="/resume.pdf"
-            download="Mohit_Kumar_Mishra_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-6 text-sm font-semibold text-white transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-          >
-            <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-            Download Resume
-          </a>
-        </motion.div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="#projects"
+              className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-white px-6 text-sm font-semibold text-slate-950 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+            >
+              <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400 opacity-0 blur transition group-hover:opacity-60" />
+              View Projects
+            </Link>
+            <Link
+              href="#contact"
+              className="group relative inline-flex h-11 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+            >
+              <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400/60 via-indigo-400/60 to-fuchsia-400/60 opacity-0 blur transition group-hover:opacity-50" />
+              Contact Me
+            </Link>
+            <a
+              href="/resumee.pdf"
+              download="Mohit_Kumar_Mishra_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-6 text-sm font-semibold text-white transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+            >
+              <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+              Download Resume
+            </a>
+          </div>
 
         <motion.div
           variants={{ hidden: { y: 14, opacity: 0 }, show: { y: 0, opacity: 1 } }}
