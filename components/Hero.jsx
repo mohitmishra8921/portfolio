@@ -97,12 +97,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 bg-white dark:bg-slate-950 transition-colors duration-300"
     >
-      <div className="absolute inset-0 -z-10 bg-slate-950" />
+      <div className="absolute inset-0 -z-10 bg-white dark:bg-slate-950" />
       
       {/* Background Mesh/Grid Effect */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
 
       {/* Radial Glows */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -139,7 +139,7 @@ export default function Hero() {
 
         <motion.h1
           variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } }}
-          className="text-balance text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl"
+          className="text-balance text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-7xl lg:text-8xl"
         >
           From Raw Data to <br />
           <span className="relative inline-block bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite] drop-shadow-[0_0_15px_rgba(99,102,241,0.3)]">
@@ -149,22 +149,22 @@ export default function Hero() {
 
         <motion.p
           variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } }}
-          className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-8 text-slate-300/90 sm:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-8 text-slate-600 dark:text-slate-300/90 sm:text-xl"
         >
-          Hi, I'm <span className="font-semibold text-white">Mohit Mishra</span> — a Data Science enthusiast who builds ML models, uncovers patterns in complex data, and delivers insights that actually matter.
+          Hi, I'm <span className="font-semibold text-slate-900 dark:text-white">Mohit Mishra</span> — a Data Science enthusiast who builds ML models, uncovers patterns in complex data, and delivers insights that actually matter.
         </motion.p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="#projects"
-              className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-white px-6 text-sm font-semibold text-slate-950 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 dark:bg-white px-6 text-sm font-semibold text-white dark:text-slate-950 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400 opacity-0 blur transition group-hover:opacity-60" />
               View Projects
             </Link>
             <Link
               href="#contact"
-              className="group relative inline-flex h-11 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="group relative inline-flex h-11 items-center justify-center rounded-xl border border-slate-200 dark:border-white/20 bg-slate-50 dark:bg-white/10 px-6 text-sm font-semibold text-slate-900 dark:text-white shadow-sm backdrop-blur transition hover:bg-slate-100 dark:hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-r from-sky-400/60 via-indigo-400/60 to-fuchsia-400/60 opacity-0 blur transition group-hover:opacity-50" />
               Contact Me
@@ -174,7 +174,7 @@ export default function Hero() {
               download="Mohit_Kumar_Mishra_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-6 text-sm font-semibold text-white transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-white/10 bg-transparent px-6 text-sm font-semibold text-slate-700 dark:text-white transition hover:bg-slate-50 dark:hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
               Download Resume
@@ -189,7 +189,7 @@ export default function Hero() {
             href="https://github.com/mohitmishra8921"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-white/5 p-2 text-white/80 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-white hover:ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+            className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 p-2 text-slate-600 dark:text-white/80 ring-1 ring-slate-200 dark:ring-white/10 transition hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white hover:ring-slate-300 dark:hover:ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             aria-label="GitHub"
           >
             <svg
@@ -206,7 +206,7 @@ export default function Hero() {
             href="https://www.linkedin.com/in/mohit-kumar-mishra-32986b328/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-white/5 p-2 text-white/80 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-white hover:ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+            className="group relative inline-flex h-11 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 p-2 text-slate-600 dark:text-white/80 ring-1 ring-slate-200 dark:ring-white/10 transition hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white hover:ring-slate-300 dark:hover:ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             aria-label="LinkedIn"
           >
             <svg

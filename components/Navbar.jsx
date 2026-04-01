@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
@@ -105,6 +106,9 @@ export default function Navbar() {
               className="flex items-center gap-6"
               onAnchorClick={handleAnchorClick}
             />
+            <div className="ml-6">
+              <ThemeToggle />
+            </div>
           </div>
 
           <button

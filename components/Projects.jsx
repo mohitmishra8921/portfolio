@@ -55,9 +55,9 @@ function ExternalLinkButton({ href, children, variant = "secondary", disabled = 
   const styles =
     variant === "primary"
       ? disabled 
-        ? "bg-white/10 text-white/40 cursor-not-allowed border border-white/5" 
-        : "bg-white text-slate-950 hover:bg-white/90"
-      : "border border-white/15 bg-white/5 text-white hover:bg-white/10";
+        ? "bg-slate-200 dark:bg-white/10 text-slate-400 dark:text-white/40 cursor-not-allowed border border-slate-200 dark:border-white/5" 
+        : "bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white/90 shadow-sm"
+      : "border border-slate-200 dark:border-white/15 bg-white dark:bg-white/5 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 shadow-sm";
 
   return (
     <div className="relative group/btn">
@@ -81,7 +81,7 @@ function ExternalLinkButton({ href, children, variant = "secondary", disabled = 
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-slate-950 px-4 py-20">
+    <section id="projects" className="bg-white dark:bg-slate-950 px-4 py-20 transition-colors duration-300">
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -90,10 +90,10 @@ export default function Projects() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12 text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
             Projects
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
             A few data projects I’ve worked on — from analysis to machine learning.
           </p>
         </motion.div>
@@ -108,10 +108,10 @@ export default function Projects() {
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
+              className="group overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 shadow-lg shadow-black/5 dark:shadow-black/20 transition hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-white/20 hover:bg-white dark:hover:bg-white/10"
             >
               <div className="relative h-44 w-full">
-                <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-transparent to-fuchsia-500/10" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 dark:from-sky-500/10 via-transparent to-fuchsia-500/5 dark:to-fuchsia-500/10" />
                 <Image
                   src={project.imageSrc}
                   alt={project.title}
@@ -121,10 +121,10 @@ export default function Projects() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                   {project.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
                   {project.description}
                 </p>
 
@@ -132,7 +132,7 @@ export default function Projects() {
                   {project.tools.map((tool) => (
                     <span
                       key={tool}
-                      className="rounded-full border border-white/10 bg-slate-900/40 px-3 py-1 text-xs font-medium text-slate-200"
+                      className="rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/40 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-200"
                     >
                       {tool}
                     </span>
