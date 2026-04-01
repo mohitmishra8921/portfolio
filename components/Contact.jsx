@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SiGithub, SiKaggle, SiWhatsapp } from "react-icons/si";
+import { SiGithub, SiWhatsapp } from "react-icons/si";
 
 function Field({ label, children }) {
   return (
@@ -185,19 +185,6 @@ export default function Contact() {
                   <div>
                     <p className="text-xs font-semibold text-slate-400">LinkedIn</p>
                     <p className="mt-1 font-medium text-white">mohit-kumar-mishra</p>
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.kaggle.com/mohitmishra8921"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-2xl border border-white/10 bg-slate-900/30 p-4 text-sm text-slate-200 transition hover:border-white/20 hover:bg-slate-900/40 flex items-center gap-4"
-                >
-                  <SiKaggle className="h-5 w-5 text-[#20BEFF]" />
-                  <div>
-                    <p className="text-xs font-semibold text-slate-400">Kaggle</p>
-                    <p className="mt-1 font-medium text-white">mohitmishra8921</p>
                   </div>
                 </a>
 
