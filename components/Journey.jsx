@@ -43,29 +43,29 @@ function TimelineItem({ title, description, icon, date, isLast }) {
       <div className="relative flex flex-col items-center">
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 5 }}
-          className="z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xl shadow-xl transition-all group-hover:border-indigo-500/50 group-hover:shadow-indigo-500/20"
+          className="z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-gray-200 dark:border-[#white/10] bg-white dark:bg-[#0d1117] text-xl shadow-xl transition-all group-hover:border-indigo-500/50 group-hover:shadow-indigo-500/20"
         >
           {icon}
         </motion.div>
         {!isLast && (
-          <div className="absolute top-12 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-slate-200 dark:via-white/10 to-transparent" />
+          <div className="absolute top-12 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-gray-200 dark:via-white/10 to-transparent" />
         )}
       </div>
 
       <div className="pb-12">
         <motion.div
           whileHover={{ x: 4 }}
-          className="rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] p-6 shadow-2xl backdrop-blur-sm transition-all group-hover:border-indigo-500/20 group-hover:bg-white/[0.04]"
+          className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#161b22] p-6 shadow-2xl backdrop-blur-sm transition-all group-hover:border-indigo-500/20 group-hover:bg-white/[0.04]"
         >
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
               {title}
             </h3>
             <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400/80 bg-indigo-50 dark:bg-indigo-400/10 px-3 py-1 rounded-full">
               {date}
             </span>
           </div>
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors">
+          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-slate-300 transition-colors">
             {description}
           </p>
         </motion.div>
@@ -76,7 +76,7 @@ function TimelineItem({ title, description, icon, date, isLast }) {
 
 export default function Journey() {
   return (
-    <section id="journey" className="relative bg-white dark:bg-slate-950 px-4 py-24 overflow-hidden transition-colors duration-300">
+    <section id="journey" className="relative bg-gray-100 dark:bg-[#0d1117] px-4 py-24 overflow-hidden transition-colors duration-300">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
       <div className="absolute bottom-0 left-0 -z-10 h-64 w-64 rounded-full bg-sky-500/5 blur-3xl" />
@@ -88,10 +88,10 @@ export default function Journey() {
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             My Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">Journey</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
             A chronicle of my evolution as a Data Scientist, from first lines of code to building predictive models.
           </p>
         </motion.div>
