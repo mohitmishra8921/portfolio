@@ -63,7 +63,7 @@ export default function Navbar() {
 
     // Use a small delay on mobile to let the menu close smoothly before jumping
     const scroll = () => {
-      const offset = 80; // height of navbar + gap
+      const offset = 64; // fixed height of navbar
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -91,7 +91,7 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0"
     >
-      <nav className="navbar bg-slate-900/40 backdrop-blur-md border-b border-white/10 px-8">
+      <nav className="navbar">
           <Link
             href="/"
             onClick={(e) => handleAnchorClick(e, "#home")}
@@ -101,21 +101,17 @@ export default function Navbar() {
             Mohit Kumar Mishra
           </Link>
 
-          <div className="hidden items-center md:flex gap-8">
-            <NavLinks
-              className="nav-links"
-              onAnchorClick={handleAnchorClick}
-            />
-            <div className="nav-right">
-              <ThemeToggle />
-            </div>
-          </div>
+          <NavLinks
+            className={`nav-links ${mobileOpen ? 'open' : ''}`}
+            onAnchorClick={handleAnchorClick}
+            onItemClick={() => setMobileOpen(false)}
+          />
 
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="nav-right">
             <ThemeToggle />
             <button
               type="button"
-              className="hamburger inline-flex items-center justify-center rounded-md p-2 text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="hamburger inline-flex items-center justify-center rounded-md p-2 text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none md:hidden"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
@@ -145,32 +141,6 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
-
-        <AnimatePresence>
-          {mobileOpen ? (
-            <motion.div
-              key="mobile"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute top-16 left-0 right-0 px-2 md:hidden"
-            >
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                className="rounded-3xl border border-white/10 bg-slate-900/95 p-6 shadow-2xl backdrop-blur-xl"
-              >
-                <NavLinks
-                  className="flex flex-col gap-6"
-                  onItemClick={() => setMobileOpen(false)}
-                  onAnchorClick={handleAnchorClick}
-                />
-              </motion.div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
       </nav>
     </motion.header>
   );

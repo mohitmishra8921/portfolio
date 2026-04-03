@@ -37,11 +37,39 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem={false}
+          enableSystem={true}
         >
           <ScrollToTop />
           <Navbar />
           {children}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function () {
+                  const btn = document.querySelector('#darkToggle, #themeToggle, .dark-toggle, .theme-btn');
+                  if (!btn) return;
+
+                  const saved = localStorage.getItem('theme');
+                  if (saved === 'dark') {
+                    document.body.classList.add('dark');
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.body.classList.remove('dark');
+                    document.documentElement.classList.remove('dark');
+                  }
+
+                  btn.addEventListener('click', function () {
+                    const isDark = document.body.classList.toggle('dark');
+                    document.documentElement.classList.toggle('dark', isDark);
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    btn.textContent = isDark ? '☀️' : '🌙';
+                  });
+
+                  btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+                })();
+              `,
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>
