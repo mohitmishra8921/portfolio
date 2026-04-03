@@ -43,7 +43,8 @@ function TimelineItem({ title, description, icon, date, isLast }) {
       <div className="relative flex flex-col items-center">
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 5 }}
-          className="z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-gray-200 dark:border-[#white/10] bg-white dark:bg-[#0d1117] text-xl shadow-xl transition-all group-hover:border-indigo-500/50 group-hover:shadow-indigo-500/20"
+          viewport={{ once: true, amount: 0.1 }}
+          className="z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-gray-200 dark:border-[#white/10] bg-white dark:bg-[#0d1117] text-xl shadow-xl transition-all group-hover:border-indigo-500/50 group-hover:shadow-indigo-500/20 gpu-accelerated"
         >
           {icon}
         </motion.div>
@@ -55,7 +56,8 @@ function TimelineItem({ title, description, icon, date, isLast }) {
       <div className="pb-12">
         <motion.div
           whileHover={{ x: 4 }}
-          className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#161b22] p-6 shadow-2xl backdrop-blur-sm transition-all group-hover:border-indigo-500/20 group-hover:bg-white/[0.04]"
+          viewport={{ once: true, amount: 0.1 }}
+          className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#161b22] p-6 shadow-2xl backdrop-blur-sm transition-all group-hover:border-indigo-500/20 group-hover:bg-white/[0.04] gpu-accelerated"
         >
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
@@ -76,16 +78,17 @@ function TimelineItem({ title, description, icon, date, isLast }) {
 
 export default function Journey() {
   return (
-    <section id="journey" className="relative bg-gray-100 dark:bg-[#0d1117] px-4 py-24 overflow-hidden transition-colors duration-300">
+    <section id="journey" className="relative bg-gray-100 dark:bg-[#0d1117] px-4 py-24 overflow-hidden transition-colors duration-300 gpu-accelerated">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
       <div className="absolute bottom-0 left-0 -z-10 h-64 w-64 rounded-full bg-sky-500/5 blur-3xl" />
 
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="mb-20 text-center"
         >
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
@@ -101,10 +104,10 @@ export default function Journey() {
             {MILESTONES.map((m, idx) => (
               <motion.div
                 key={m.title}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.4, delay: idx * 0.05, ease: "easeOut" }}
               >
                 <TimelineItem
                   title={m.title}

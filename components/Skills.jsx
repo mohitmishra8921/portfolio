@@ -60,7 +60,8 @@ function SkillCard({ icon, name }) {
   return (
     <motion.div 
       whileHover={{ y: -2 }}
-      className="group flex items-center gap-3 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-900/50 p-3 transition-all hover:border-indigo-500/30 hover:bg-indigo-500/5"
+      viewport={{ once: true, amount: 0.1 }}
+      className="group flex items-center gap-3 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-900/50 p-3 transition-all hover:border-indigo-500/30 hover:bg-indigo-500/5 gpu-accelerated"
     >
       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white dark:bg-slate-800 text-lg shadow-inner group-hover:bg-slate-700 transition-colors">
         {icon}
@@ -72,15 +73,16 @@ function SkillCard({ icon, name }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative bg-white dark:bg-slate-950 px-4 py-24 overflow-hidden transition-colors duration-300">
+    <section id="skills" className="relative bg-white dark:bg-slate-950 px-4 py-24 overflow-hidden transition-colors duration-300 gpu-accelerated">
       {/* Background decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
       
       <div className="mx-auto w-full max-w-6xl relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="mb-16 text-center"
         >
           <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
@@ -95,10 +97,10 @@ export default function Skills() {
           {SKILL_GROUPS.map((group, idx) => (
             <motion.div
               key={group.title}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -15 : 15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.05, ease: "easeOut" }}
               className="relative group rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] p-8 backdrop-blur-sm transition-all hover:border-indigo-500/20 hover:bg-white/[0.04]"
             >
               <div className="flex items-start justify-between mb-6">

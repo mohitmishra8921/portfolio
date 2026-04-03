@@ -25,8 +25,12 @@ function CertificationCard({ cert }) {
           <div className="relative h-12 w-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900">
             <img
               src={cert.image}
-              alt="CodeWithHarry Python Bootcamp Certificate"
-              className="h-full w-full object-cover"
+              alt={cert.name}
+              width={48}
+              height={48}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover will-change-transform"
               onError={(e) => {
                 e.target.src = "https://placehold.co/400x300?text=Certificate";
               }}
@@ -62,13 +66,13 @@ function CertificationCard({ cert }) {
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="bg-white dark:bg-slate-950 px-4 py-20 transition-colors duration-300">
+    <section id="certifications" className="bg-white dark:bg-slate-950 px-4 py-20 transition-colors duration-300 gpu-accelerated">
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="mb-12 text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">

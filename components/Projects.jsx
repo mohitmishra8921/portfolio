@@ -11,7 +11,7 @@ const PROJECTS = [
     description:
       "Performed EDA on 8,000+ Netflix titles using Python. Uncovered that international content grew 3x between 2016–2020. Delivered 12 visual charts identifying optimal release windows to maximize viewership.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
-    imageSrc: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=75&fm=webp",
     githubUrl: "https://github.com/mohitmishra8921/netflix-analysis",
     demoUrl: "https://your-live-demo.com",
     demoReady: true,
@@ -21,7 +21,7 @@ const PROJECTS = [
     description:
       "Analyzed 500,000+ ball-by-ball records from IPL history. Built a custom scoring model achieving 78% accuracy in predicting team win-probability based on match conditions.",
     tools: ["Python", "NumPy", "Pandas", "Plotly"],
-    imageSrc: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=75&fm=webp",
     githubUrl: "https://github.com/mohitmishra8921/ipl-analytics",
     demoUrl: "https://your-live-demo.com",
     demoReady: true,
@@ -31,7 +31,7 @@ const PROJECTS = [
     description:
       "Built an interactive Streamlit dashboard on 2 years of retail data. Applied ARIMA time-series forecasting to predict quarterly demand with 85% accuracy, reducing overstock risk.",
     tools: ["Python", "Pandas", "Scikit-learn", "Streamlit"],
-    imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=75&fm=webp",
     githubUrl: "https://github.com/mohitmishra8921/sales-forecasting",
     demoUrl: "https://your-live-demo.com",
     demoReady: true,
@@ -41,7 +41,7 @@ const PROJECTS = [
     description:
       "Developed an end-to-end ML pipeline using XGBoost + feature engineering. Achieved RMSE reduction of 23% over baseline, deployed via FastAPI.",
     tools: ["Python", "XGBoost", "Scikit-learn", "FastAPI"],
-    imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=75&fm=webp",
     githubUrl: "https://github.com/mohitmishra8921/real-estate-valuation",
     demoUrl: "https://your-live-demo.com",
     demoReady: true,
@@ -108,15 +108,19 @@ export default function Projects() {
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 shadow-lg shadow-black/5 dark:shadow-black/20 transition hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-white/20 hover:bg-white dark:hover:bg-white/10"
+              className="group overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-white/20 hover:bg-white dark:hover:bg-white/10 gpu-accelerated"
             >
-              <div className="relative h-44 w-full">
-                <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 dark:from-sky-500/10 via-transparent to-fuchsia-500/5 dark:to-fuchsia-500/10" />
+              <div className="relative h-44 w-full overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 dark:from-sky-500/10 via-transparent to-fuchsia-500/5 dark:to-fuchsia-500/10 z-10" />
                 <Image
                   src={project.imageSrc}
                   alt={project.title}
-                  fill
-                  className="object-cover opacity-90 transition duration-500 group-hover:scale-110 group-hover:opacity-100"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+                  className="object-cover opacity-90 transition duration-500 group-hover:scale-110 group-hover:opacity-100 will-change-transform"
                 />
               </div>
 
