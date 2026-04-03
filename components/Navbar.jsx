@@ -95,7 +95,7 @@ export default function Navbar() {
             className="select-none text-sm font-bold tracking-tight text-white"
             aria-label="Go to home"
           >
-            Mohit Mishra
+            Mohit Kumar Mishra
           </Link>
 
           <div className="hidden items-center md:flex">
