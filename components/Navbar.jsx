@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
@@ -61,9 +60,8 @@ export default function Navbar() {
     const el = document.querySelector(href);
     if (!el) return;
 
-    // Use a small delay on mobile to let the menu close smoothly before jumping
     const scroll = () => {
-      const offset = 64; // fixed height of navbar
+      const offset = 80; // height of navbar + gap
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -77,7 +75,6 @@ export default function Navbar() {
 
     if (mobileOpen) {
       setMobileOpen(false);
-      // Wait for exit animation (300ms) to complete before scrolling for better performance
       setTimeout(scroll, 310);
     } else {
       scroll();
@@ -89,58 +86,82 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4"
     >
-      <nav className="navbar">
+      <nav className="relative flex h-14 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-slate-900/40 px-6 shadow-2xl backdrop-blur-md">
           <Link
             href="/"
             onClick={(e) => handleAnchorClick(e, "#home")}
-            className="navbar-brand select-none text-sm font-bold tracking-tight text-white"
+            className="select-none text-sm font-bold tracking-tight text-white"
             aria-label="Go to home"
           >
-            Mohit Kumar Mishra
+            Mohit Mishra
           </Link>
 
-          <NavLinks
-            className={`nav-links ${mobileOpen ? 'open' : ''}`}
-            onAnchorClick={handleAnchorClick}
-            onItemClick={() => setMobileOpen(false)}
-          />
-
-          <div className="nav-right">
-            <ThemeToggle />
-            <button
-              type="button"
-              className="hamburger inline-flex items-center justify-center rounded-md p-2 text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none md:hidden"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((v) => !v)}
-            >
-              <span className="sr-only">Menu</span>
-              <svg
-                className="h-6 w-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {mobileOpen ? (
-                  <>
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                  </>
-                ) : (
-                  <>
-                    <path d="M4 6h16" />
-                    <path d="M4 12h16" />
-                    <path d="M4 18h16" />
-                  </>
-                )}
-              </svg>
-            </button>
+          <div className="hidden items-center md:flex">
+            <NavLinks
+              className="flex items-center gap-6"
+              onAnchorClick={handleAnchorClick}
+            />
           </div>
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2 text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:hidden"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            <span className="sr-only">Menu</span>
+            <svg
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {mobileOpen ? (
+                <>
+                  <path d="M18 6 6 18" />
+                  <path d="M6 6l12 12" />
+                </>
+              ) : (
+                <>
+                  <path d="M4 6h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 18h16" />
+                </>
+              )}
+            </svg>
+          </button>
+
+        <AnimatePresence>
+          {mobileOpen ? (
+            <motion.div
+              key="mobile"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-full left-0 right-0 mt-4 px-2 md:hidden"
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                className="rounded-3xl border border-white/10 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl"
+              >
+                <NavLinks
+                  className="flex flex-col gap-6"
+                  onItemClick={() => setMobileOpen(false)}
+                  onAnchorClick={handleAnchorClick}
+                />
+              </motion.div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
       </nav>
     </motion.header>
   );
