@@ -10,32 +10,36 @@ export default function ThemeToggle() {
     setMounted(true);
     const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
-    document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    if (newTheme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
   };
 
   if (!mounted) return null;
 
   return (
     <button
+      id="darkToggle"
       onClick={toggleTheme}
-      className="p-2 rounded-full border border-slate-200 dark:border-white/10 
-                 bg-white/80 dark:bg-slate-800/80 
-                 text-slate-900 dark:text-yellow-400 
-                 hover:scale-110 transition-all duration-300 
-                 shadow-sm hover:shadow-md backdrop-blur-sm"
       aria-label="Toggle Theme"
     >
       {theme === "dark" ? (
-        <Sun size={18} />
+        <Sun size={20} className="text-yellow-400" />
       ) : (
-        <Moon size={18} />
+        <Moon size={20} className="text-slate-700" />
       )}
     </button>
   );

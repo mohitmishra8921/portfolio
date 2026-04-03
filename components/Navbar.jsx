@@ -89,35 +89,33 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-3"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0"
     >
-      <nav className="relative flex h-11 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-slate-900/40 px-5 shadow-2xl backdrop-blur-md">
+      <nav className="navbar bg-slate-900/40 backdrop-blur-md border-b border-white/10 px-8">
           <Link
             href="/"
             onClick={(e) => handleAnchorClick(e, "#home")}
-            className="select-none text-sm font-bold tracking-tight text-white"
+            className="navbar-brand select-none text-sm font-bold tracking-tight text-white"
             aria-label="Go to home"
           >
             Mohit Kumar Mishra
           </Link>
 
-          <div className="hidden items-center md:flex">
+          <div className="hidden items-center md:flex gap-8">
             <NavLinks
-              className="flex items-center gap-6"
+              className="nav-links"
               onAnchorClick={handleAnchorClick}
             />
-            <div className="ml-4">
+            <div className="nav-right">
               <ThemeToggle />
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="md:hidden">
-              <ThemeToggle />
-            </div>
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="hamburger inline-flex items-center justify-center rounded-md p-2 text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
@@ -156,13 +154,13 @@ export default function Navbar() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-full left-0 right-0 mt-4 px-2 md:hidden"
+              className="absolute top-16 left-0 right-0 px-2 md:hidden"
             >
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
-                className="rounded-3xl border border-white/10 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl"
+                className="rounded-3xl border border-white/10 bg-slate-900/95 p-6 shadow-2xl backdrop-blur-xl"
               >
                 <NavLinks
                   className="flex flex-col gap-6"
