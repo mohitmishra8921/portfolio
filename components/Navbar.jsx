@@ -61,7 +61,7 @@ export default function Navbar() {
     if (!el) return;
 
     const scroll = () => {
-      const offset = 80; // height of navbar + gap
+      const offset = 80;
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -69,7 +69,7 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: "smooth"
       });
-      
+
       window.history.replaceState(null, "", href);
     };
 
@@ -88,7 +88,7 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4"
     >
-      <nav className="relative flex h-14 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-slate-900/40 px-6 shadow-2xl backdrop-blur-md">
+      <nav className="relative flex h-14 w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-transparent px-6 shadow-2xl">
           <Link
             href="/"
             onClick={(e) => handleAnchorClick(e, "#home")}
