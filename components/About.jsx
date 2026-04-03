@@ -43,9 +43,9 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
-          className="grid items-center gap-12 md:grid-cols-2 gpu-accelerated"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="grid items-center gap-12 md:grid-cols-2"
         >
           {/* Left Side: Profile Picture */}
           <div className="relative mx-auto w-full max-w-sm md:max-w-md">
@@ -53,11 +53,7 @@ export default function About() {
               <img
                 src="/mohit2.jpeg" 
                 alt="Mohit Mishra Profile"
-                width={400}
-                height={500}
-                loading="eager"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 will-change-transform"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               {/* Decorative overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />

@@ -38,18 +38,15 @@ export default function Hero() {
     () => ({
       background: { color: { value: "transparent" } },
       fullScreen: { enable: false },
-      fpsLimit: 30, // Reduced from 60 for mobile performance
-      detectRetina: false, // Disabled for performance
+      fpsLimit: 60,
+      detectRetina: true,
       particles: {
-        number: { 
-          value: typeof window !== 'undefined' && window.innerWidth < 768 ? 15 : 30, // Reduced count on mobile
-          density: { enable: true, area: 800 } 
-        },
+        number: { value: 30, density: { enable: true, area: 800 } },
         color: { value: ["#7dd3fc", "#a5b4fc", "#f0abfc", "#6366f1"] },
         opacity: {
           value: { min: 0.1, max: 0.5 },
           animation: {
-            enable: typeof window !== 'undefined' && window.innerWidth > 768, // Disable on mobile
+            enable: true,
             speed: 1,
             minimumValue: 0.1,
           },
@@ -57,35 +54,35 @@ export default function Hero() {
         size: {
           value: { min: 1, max: 3 },
           animation: {
-            enable: typeof window !== 'undefined' && window.innerWidth > 768, // Disable on mobile
+            enable: true,
             speed: 2,
             minimumValue: 1,
           },
         },
         move: {
           enable: true,
-          speed: { min: 0.1, max: 0.5 }, // Slower for less GPU load
+          speed: { min: 0.1, max: 1 },
           direction: "none",
           random: true,
           straight: false,
           outModes: "out",
         },
         links: {
-          enable: typeof window !== 'undefined' && window.innerWidth > 768, // Disable links on mobile
+          enable: true,
           distance: 150,
           color: "#ffffff",
           opacity: 0.1,
           width: 1,
           triangles: {
-            enable: false, // Disabling triangles for performance
+            enable: true,
             opacity: 0.02,
           },
         },
       },
       interactivity: {
         events: {
-          onHover: { enable: typeof window !== 'undefined' && window.innerWidth > 768, mode: "grab" },
-          onClick: { enable: false, mode: "push" }, // Disabled for performance
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" },
           resize: true,
         },
         modes: {
@@ -100,7 +97,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 bg-white dark:bg-slate-950 transition-colors duration-300 gpu-accelerated"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 bg-white dark:bg-slate-950 transition-colors duration-300"
     >
       <div className="absolute inset-0 -z-10 bg-white dark:bg-slate-950" />
       

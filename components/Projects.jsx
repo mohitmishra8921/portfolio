@@ -108,19 +108,15 @@ export default function Projects() {
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-white/20 hover:bg-white dark:hover:bg-white/10 gpu-accelerated"
+              className="group overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 shadow-lg shadow-black/5 dark:shadow-black/20 transition hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-white/20 hover:bg-white dark:hover:bg-white/10"
             >
-              <div className="relative h-44 w-full overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 dark:from-sky-500/10 via-transparent to-fuchsia-500/5 dark:to-fuchsia-500/10 z-10" />
+              <div className="relative h-44 w-full">
+                <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 dark:from-sky-500/10 via-transparent to-fuchsia-500/5 dark:to-fuchsia-500/10" />
                 <Image
                   src={project.imageSrc}
                   alt={project.title}
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
-                  className="object-cover opacity-90 transition duration-500 group-hover:scale-110 group-hover:opacity-100 will-change-transform"
+                  fill
+                  className="object-cover opacity-90 transition duration-500 group-hover:scale-110 group-hover:opacity-100"
                 />
               </div>
 
